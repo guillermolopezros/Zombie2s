@@ -5,7 +5,7 @@ public class Disparo : MonoBehaviour {
 
 		
 		
-		public GameObject ammo;
+		public GameObject bala;
 		public Transform puntoDisparo;
 		
 		
@@ -20,8 +20,8 @@ public class Disparo : MonoBehaviour {
 		}
 		
 		public void Fire(){
-			if (ammo != null) {
-				var clone = Instantiate(ammo, puntoDisparo.position,
+			if (bala != null) {
+				var clone = Instantiate(bala, puntoDisparo.position,
 				                        Quaternion.identity) as GameObject;
 				clone.transform.localScale = transform.localScale;
 			}
