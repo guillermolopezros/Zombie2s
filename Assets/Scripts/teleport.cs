@@ -3,24 +3,29 @@ using System.Collections;
 
 public class teleport : MonoBehaviour {
 	
-	public Transform punto1;
-	public float tiempoEspera = 0.0f; // Tiempo que el Player tiene que estar para cargar
-	bool cargando = false; // Controla si el player esta dentro del trigger
-	
+	public Transform destino;
+	//public float tiempoEspera = 0.0f; // Tiempo que el Player tiene que estar para cargar
+	//bool cargando = false; // Controla si el player esta dentro del trigger
+
+	void OnTriggerStay2D(Collider2D target){
+		
+				if (target.transform.tag == "Player")
+						target.transform.position = destino.position;
+		}
 	
 	
 	void OnDrawGizmosSelected() {
-		if (punto1 != null) {
+		if (destino != null) {
 			Gizmos.color = Color.blue;
-			Gizmos.DrawLine(transform.position,  punto1.position);
+			Gizmos.DrawLine(transform.position,  destino.position);
 		}
 	}
+
 	
-	
-	void OnTriggerStay2D(Collider2D target){
+/*	void OnTriggerStay2D(Collider2D target){
 		
 		if (target.transform.tag == "Player") {
-			Debug.Log("Entrando");
+			Debug.Log("Entrando"); 
 			if(!cargando) // Si no esta cargando empezamos la cuenta atras
 				StartCoroutine(cargaSalto(target));
 			
@@ -40,4 +45,5 @@ public class teleport : MonoBehaviour {
 		if(cargando) // Si sigue en el trigger cargamos la escena
 			target.transform.position = punto1.position;
 	}
+	 */
 }
